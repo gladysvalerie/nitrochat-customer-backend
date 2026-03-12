@@ -12,7 +12,10 @@ async def chat_ask(req: AskReq):
         async with httpx.AsyncClient(timeout=30.0) as client:
             r = await client.post(
                 f"{ADMIN_BASE_URL}/faq/answer",
-                json={"question": req.question},
+                json={
+                    "question": req.question,
+                    "thread_id": req.thread_id
+                },
                 headers={"X-Internal-Key": ADMIN_INTERNAL_KEY},
             )
             r.raise_for_status()

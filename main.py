@@ -23,4 +23,4 @@ app.add_middleware(
 async def health():
     return {"ok": True}
 
-app.include_router(chat_router)
+app.include_router(chat_router, prefix="/api/customer")
