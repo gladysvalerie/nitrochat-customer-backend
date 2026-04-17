@@ -25,9 +25,10 @@ async def chat_ask(req: AskReq):
         # pass through admin's error body safely
         try:
             payload = e.response.json()
+            detail = payload.get("detail") or payload
         except Exception:
-            payload = {"detail": e.response.text}
-        raise HTTPException(status_code=e.response.status_code, detail=payload)
+            detail = {"message": e.response.text}
+        raise HTTPException(status_code=e.response.status_code, detail=detail)
 
     except httpx.TimeoutException:
         raise HTTPException(status_code=504, detail="Admin timeout")
