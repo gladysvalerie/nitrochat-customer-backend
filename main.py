@@ -29,5 +29,5 @@ app.include_router(chat_router, prefix="/api/customer")
 # For fastAPI coolify integration
 if __name__ == "__main__":
     import uvicorn
-    PORT = int(os.environ.get("PORT", 8001))
+    PORT = int(os.environ.get("PORT", 8000))
     uvicorn.run("main:app", host="0.0.0.0", port=PORT)
