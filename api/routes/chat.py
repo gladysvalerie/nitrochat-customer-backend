@@ -66,3 +66,28 @@ async def change_language(req: LanguageRequest):
 
     except httpx.RequestError:
         raise HTTPException(status_code=502, detail="Admin unreachable")
+    
+    
+@router.get("/check_fallback")
+async def check_bot_settings(UUID):
+    async with httpx.AsyncClient(timeout=30.0) as client:
+        r = await client.get(
+            f"{ADMIN_BASE_URL}/chat/fallback",
+            params={"thread_id": UUID}
+        )
+        r.raise_for_status()
+        
+        
+        return r.json()
+    
+@router.get("/fallback_cleanup")
+async def fallback_cleanup(UUID):
+    async with httpx.AsyncClient(timeout=30.0) as client:
+        r = await client.get(
+            f"{ADMIN_BASE_URL}/chat/fallback_cleanup",
+            params={"thread_id": UUID}
+        )
+        r.raise_for_status()
+        
+        
+        return r.json()
