@@ -4,6 +4,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from api.routes.chat import router as chat_router
+import os
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -13,7 +14,7 @@ app = FastAPI(lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"], 
+    allow_origins=["http://localhost:5173","http://localhost:5175", "http://qk80o4kg0k0s0o0ow08o80o8.213.35.118.103.sslip.io"], 
     allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"]
@@ -24,3 +25,9 @@ async def health():
     return {"ok": True}
 
 app.include_router(chat_router, prefix="/api/customer")
+
+# For fastAPI coolify integration
+if __name__ == "__main__":
+    import uvicorn
+    PORT = int(os.environ.get("PORT", 8000))
+    uvicorn.run("main:app", host="0.0.0.0", port=PORT)
