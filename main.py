@@ -3,7 +3,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from api.routes.chat import router as chat_router
+from routes.chat import router as chat_router
 import os
 
 @asynccontextmanager
