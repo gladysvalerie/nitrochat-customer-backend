@@ -10,7 +10,7 @@ async def change_language(selected_language: str) -> dict:
             r = await client.post(
                 f"{ADMIN_BASE_URL}/language",
                 json={"selected_language": selected_language},
-                headers={"X-Internal-Key": ADMIN_INTERNAL_KEY},
+                headers={"X-Internal-Key":  ADMIN_INTERNAL_KEY},
             )
             r.raise_for_status()
             return r.json()
