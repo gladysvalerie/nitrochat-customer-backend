@@ -6,9 +6,9 @@ from config import ADMIN_BASE_URL, ADMIN_INTERNAL_KEY
 
 async def ask_question(question: str, thread_id: str) -> dict:
     try:
-        async with httpx.AsyncClient(timeout=30.0) as client:
+        async with httpx.AsyncClient(timeout=60.0) as client:
             r = await client.post(
-                f"{ADMIN_BASE_URL}/faq/answer",
+                f"{ADMIN_BASE_URL}/chat/answer",
                 json={"question": question, "thread_id": thread_id},
                 headers={"X-Internal-Key": ADMIN_INTERNAL_KEY},
             )
