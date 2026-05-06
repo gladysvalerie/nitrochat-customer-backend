@@ -8,7 +8,7 @@ async def ask_question(question: str, thread_id: str) -> dict:
     try:
         async with httpx.AsyncClient(timeout=60.0) as client:
             r = await client.post(
-                f"{ADMIN_BASE_URL}/chat/answer",
+                f"{ADMIN_BASE_URL}/faq/answer",
                 json={"question": question, "thread_id": thread_id},
                 headers={"X-Internal-Key": ADMIN_INTERNAL_KEY},
             )
