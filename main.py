@@ -17,7 +17,7 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:5173","http://localhost:5175", 
         "http://s00gk4088k44o480ws8ckog8.213.35.118.103.sslip.io",
-        "http://ug8480s0o44g0g0c80ccc8o0.213.35.118.103.sslip.io/"
+        "http://ug8480s0o44g0g0c80ccc8o0.213.35.118.103.sslip.io"
         ], 
     allow_credentials=False,
     allow_methods=["*"],
