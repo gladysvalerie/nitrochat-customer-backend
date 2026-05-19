@@ -8,7 +8,7 @@ async def change_language(selected_language: str) -> dict:
     try:
         async with httpx.AsyncClient(timeout=30.0) as client:
             r = await client.post(
-                f"{ADMIN_BASE_URL}/language",
+                f"{ADMIN_BASE_URL}/api/admin/language",
                 json={"selected_language": selected_language},
                 headers={"X-Internal-Key":  ADMIN_INTERNAL_KEY},
             )

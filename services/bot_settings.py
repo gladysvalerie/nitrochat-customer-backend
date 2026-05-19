@@ -10,7 +10,7 @@ async def read_bot_settings() -> dict:
     try:
         async with httpx.AsyncClient(timeout=30.0) as client:
             r = await client.get(
-                f"{ADMIN_BASE_URL}/bot_settings/read",
+                f"{ADMIN_BASE_URL}/api/admin/bot_settings/read",
                 headers=_INTERNAL_HEADERS,
             )
             r.raise_for_status()
