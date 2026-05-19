@@ -10,7 +10,7 @@ async def check_fallback(uuid: str) -> dict:
         r = await client.get(
             f"{ADMIN_BASE_URL}/chat/fallback",
             params={"thread_id": uuid},
-            # headers=_INTERNAL_HEADERS,
+            headers=_INTERNAL_HEADERS,
         )
         r.raise_for_status()
         return r.json()
@@ -21,7 +21,7 @@ async def fallback_cleanup(uuid: str) -> dict:
         r = await client.get(
             f"{ADMIN_BASE_URL}/chat/fallback_cleanup",
             params={"thread_id": uuid},
-            # headers=_INTERNAL_HEADERS,
+            headers=_INTERNAL_HEADERS,
         )
         r.raise_for_status()
         return r.json()
