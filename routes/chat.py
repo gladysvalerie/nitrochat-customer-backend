@@ -5,6 +5,7 @@ from schemas.language import LanguageRequest
 from services import chat as chat_service
 from services import language as language_service
 from services import fallback as fallback_service
+from services import bot_settings as bot_settings_service
 
 router = APIRouter()
 
@@ -25,3 +26,7 @@ async def check_bot_settings(UUID):
 @router.get("/fallback_cleanup")
 async def fallback_cleanup(UUID):
     return await fallback_service.fallback_cleanup(UUID)
+
+@router.get("/bot_settings/read")
+async def read_bot_settings():
+    return await bot_settings_service.read_bot_settings()
